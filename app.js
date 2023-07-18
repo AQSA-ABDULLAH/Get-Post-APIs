@@ -38,13 +38,23 @@ app.post("/student", async (req, res) => {
 
 })
 
+app.listen(port, () => {
+    console.log(`connection is established ${port}`);
+})
 //Read Data using ID
-app.get("/student", async (req, res) => {
+app.get("/student/:id", async (req, res) => {
 
     try {
 
-        const studentData = await Student.find();
-        res.send(studentData)
+        const _id = req.params.id;
+        const studentData = await Student.findById(_id);
+        if(!studentData){
+            return res.status(404).send;
+        }
+        else{
+            res.send(studentData);
+        }
+
     }
     catch(e){
         res.status(400).send(e);
