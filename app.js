@@ -42,19 +42,18 @@ app.post("/student", async (req, res) => {
 
 })
 
-app.delete("/student/:id"), async(req, res) => {
-    try{
-        const id = req.params.id;
-        const deleteStudent = Student.findByIdAndDelete(id)
-        if(!id){
-            return res.status(400).send();
+app.delete("/student/:id", async (req, res) => {
+    try {
+        const deleteStudent = await Student.findByIdAndDelete(req.params.id);
+        if (!deleteStudent) {
+            return res.status(404).send(); // Return 404 if the student with the given id is not found
         }
+        res.send(deleteStudent);
+    } catch (e) {
+        res.status(500).send(e);
     }
+});
 
-    catch(e){
-
-    }
-}
 
 app.listen(port, () => {
     console.log(`connection is established ${port}`);
