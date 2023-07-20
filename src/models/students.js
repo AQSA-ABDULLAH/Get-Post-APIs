@@ -8,27 +8,27 @@ const studentSchema = new mongoose.Schema({
         minLength: 3
     },
 
-    email: {
-        type: String,
-        required: true,
-        unique: [true, "Email ID Already used."],
-        validator(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error("Invalid Email")
-            }
-        }
-    },
-    phoneno:{
-        type: Number,
-        minlength: 11,
-        maxlength: 11,
-        required: true,
-        unique: true
-    },
-    address: {
-        type: String,
-        required: true,
-    }
+    // email: {
+    //     type: String,
+    //     required: true,
+    //     // unique: [true, "Email ID Already used."],
+    //     validator(value) {
+    //         if (!validator.isEmail(value)) {
+    //             throw new Error("Invalid Email")
+    //         }
+    //     }
+    // },
+    // phoneno:{
+    //     type: Number,
+    //     minlength: 11,
+    //     maxlength: 11,
+    //     required: true,
+    //     // unique: true
+    // },
+    // address: {
+    //     type: String,
+    //     required: true,
+    // }
 })
 
 //We create new collection here
