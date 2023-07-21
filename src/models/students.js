@@ -8,6 +8,10 @@ const studentSchema = new mongoose.Schema({
         minLength: 3
     },
 
+    status: {
+        type: String
+    }
+
     // email: {
     //     type: String,
     //     required: true,

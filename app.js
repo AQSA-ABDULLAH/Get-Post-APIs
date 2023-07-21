@@ -54,6 +54,17 @@ app.delete("/student/:id", async (req, res) => {
     }
 });
 
+app.patch("/student/:id", async (req, res) => {
+    try {
+        const _id = req.params.id
+        const updateStudent = await Student.findByIdAndUpdate(_id, req.body, {
+            new:true
+        });
+        res.send(updateStudent);
+    } catch (e) {
+        res.status(500).send(updateStudent);
+    }
+});
 
 app.listen(port, () => {
     console.log(`connection is established ${port}`);
