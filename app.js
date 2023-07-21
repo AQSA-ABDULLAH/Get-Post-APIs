@@ -46,7 +46,7 @@ app.delete("/student/:id", async (req, res) => {
     try {
         const deleteStudent = await Student.findByIdAndDelete(req.params.id);
         if (!deleteStudent) {
-            return res.status(404).send(); // Return 404 if the student with the given id is not found
+            return res.status(404).send(); 
         }
         res.send(deleteStudent);
     } catch (e) {
